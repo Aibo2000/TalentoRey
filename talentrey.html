@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentoRey — Artistas de Reynosa</title>
+<meta name="description" content="Descubre el talento musical de Reynosa, Tamaulipas. Artistas locales, música independiente y contrataciones directas.">
+<meta name="keywords" content="artistas Reynosa, música Reynosa, talento Reynosa, bandas Reynosa, músicos Reynosa, Tamaulipas música">
+<meta name="geo.region" content="MX-TAM">
+<meta name="geo.placename" content="Reynosa, Tamaulipas, México">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230D0A0E'/%3E%3Ctext x='5' y='24' font-family='serif' font-size='18' font-weight='800' fill='%238B5CF6'%3ETR%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0A0E;
+  --bg2: #130F16;
+  --bg3: #1A1520;
+  --card: #1E1825;
+  --border: rgba(139,92,246,0.15);
+  --purple: #8B5CF6;
+  --purple-light: #A78BFA;
+  --amber: #D97706;
+  --amber-light: #F59E0B;
+  --cream: #F5F0E8;
+  --muted: #9B8FA8;
+  --dim: #4A3F54;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139,92,246,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(217,119,6,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+/* HEADER */
+header {
+  padding: 40px 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.logo-wrap { display: flex; flex-direction: column; }
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logo em { color: var(--purple); font-style: normal; }
+.logo-sub { font-size: 11px; color: var(--muted); font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+.header-actions { display: flex; gap: 10px; align-items: center; }
+
+.btn-outline {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--purple); color: var(--purple-light); }
+
+.btn-primary {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background: var(--purple);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--purple-light); }
+
+/* HERO */
+.hero { text-align: center; margin-bottom: 48px; }
+
+.hero-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid rgba(217,119,6,0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 58px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+
+.hero h1 span { color: var(--purple-light); }
+
+.hero p { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 440px; margin: 0 auto 24px; font-weight: 300; }
+
+.search-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-wrap input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 12px 20px 12px 44px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-wrap input::placeholder { color: var(--dim); }
+.search-wrap input:focus { border-color: var(--purple); }
+.search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--dim); font-size: 16px; }
+
+/* FILTERS */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active { background: rgba(139,92,246,0.15); border-color: var(--purple); color: var(--purple-light); }
+
+/* GRID */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 20px;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.artist-card {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  animation: fadeUp 0.4s ease both;
+}
+.artist-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-3px); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.card-cover {
+  height: 140px;
+  background: var(--bg3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-cover-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.card-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid rgba(139,92,246,0.5);
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--purple-light);
+  position: relative;
+  z-index: 1;
+}
+
+.card-genre-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(13,10,14,0.8);
+  border: 1px solid var(--border);
+  color: var(--amber-light);
+  z-index: 2;
+}
+
+.card-body { padding: 16px; }
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.card-bio {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-links { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+
+.link-pill {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.link-pill:hover { border-color: var(--purple); color: var(--purple-light); }
+
+.card-footer { display: flex; gap: 8px; }
+
+.btn-contact {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.btn-contact:hover { border-color: var(--amber); color: var(--amber-light); }
+.btn-contact.whatsapp:hover { border-color: #25D366; color: #25D366; }
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--dim);
+}
+.empty-state h3 { font-family: var(--font-display); font-size: 22px; color: var(--muted); margin-bottom: 8px; font-style: italic; }
+.empty-state p { font-size: 13px; font-weight: 300; }
+
+/* MODAL OVERLAY */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(13,10,14,0.92);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeUp 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+.modal-close:hover { color: var(--cream); }
+
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; font-weight: 300; }
+
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--dim); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--purple); }
+.form-select { appearance: none; cursor: pointer; }
+.form-select option { background: var(--bg2); }
+.form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.btn-submit {
+  width: 100%;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+.btn-submit:hover { background: var(--purple-light); }
+
+.success-msg {
+  text-align: center;
+  padding: 20px 0;
+}
+.success-icon { font-size: 40px; margin-bottom: 12px; }
+.success-msg h3 { font-family: var(--font-display); font-size: 22px; font-style: italic; color: var(--cream); margin-bottom: 8px; }
+.success-msg p { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+
+/* ADMIN */
+.admin-section { margin-top: 48px; border-top: 0.5px solid var(--border); padding-top: 32px; }
+
+.admin-login { max-width: 340px; margin: 0 auto; text-align: center; }
+.admin-login h3 { font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--muted); margin-bottom: 20px; }
+
+.pending-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+
+.pending-card {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pending-info { flex: 1; }
+.pending-name { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 2px; }
+.pending-meta { font-size: 12px; color: var(--muted); }
+
+.btn-approve {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(34,197,94,0.3);
+  background: rgba(34,197,94,0.08);
+  color: #4ade80;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+.btn-approve:hover { background: rgba(34,197,94,0.15); }
+
+.btn-reject {
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(239,68,68,0.3);
+  background: rgba(239,68,68,0.08);
+  color: #f87171;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+  margin-left: 6px;
+}
+.btn-reject:hover { background: rgba(239,68,68,0.15); }
+
+.no-pending { text-align: center; color: var(--dim); font-size: 13px; padding: 30px 0; font-style: italic; }
+
+footer {
+  text-align: center;
+  padding: 32px 0 0;
+  border-top: 0.5px solid var(--border);
+  margin-top: 48px;
+  font-size: 12px;
+  color: var(--dim);
+  font-weight: 300;
+}
+
+footer span { color: var(--purple); }
+
+.admin-toggle { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--dim); cursor: pointer; background: none; border: none; font-family: var(--font-body); margin: 0 auto; }
+.admin-toggle:hover { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="logo-wrap">
+      <div class="logo">Talento<em>Rey</em></div>
+      <div class="logo-sub">Reynosa · Tamaulipas</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-outline" onclick="openModal('register')">Registrarme</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-label">Escena local 🎵</div>
+    <h1>El talento de<br><span>Reynosa</span>, aquí.</h1>
+    <p>Descubre músicos, bandas y artistas independientes de Reynosa y contáctalos directamente.</p>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar artista, género..." oninput="filterArtists()">
+    </div>
+  </div>
+
+  <div class="filters" id="filterButtons">
+    <button class="filter-btn active" onclick="setFilter('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="setFilter('rap', this)">Rap / Hip-Hop</button>
+    <button class="filter-btn" onclick="setFilter('pop', this)">Pop</button>
+    <button class="filter-btn" onclick="setFilter('electronica', this)">Electrónica</button>
+    <button class="filter-btn" onclick="setFilter('banda', this)">Banda / Regional</button>
+    <button class="filter-btn" onclick="setFilter('rock', this)">Rock</button>
+    <button class="filter-btn" onclick="setFilter('otro', this)">Otro</button>
+  </div>
+
+  <div class="section-label" id="artistCount">Cargando artistas...</div>
+  <div class="artists-grid" id="artistsGrid"></div>
+
+  <!-- ADMIN SECTION -->
+  <div class="admin-section" id="adminSection">
+    <div class="admin-login" id="adminLogin">
+      <button class="admin-toggle" onclick="toggleAdmin()">⚙️ Acceso admin</button>
+      <div id="adminLoginForm" style="display:none;margin-top:16px;">
+        <input type="password" class="form-input" id="adminPass" placeholder="Contraseña" style="margin-bottom:10px;">
+        <button class="btn-submit" onclick="loginAdmin()" style="font-size:14px;padding:10px;">Entrar</button>
+      </div>
+    </div>
+    <div id="adminPanel" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div style="font-family:var(--font-display);font-size:20px;font-style:italic;color:var(--cream);">Panel de administración</div>
+        <button class="btn-outline" onclick="logoutAdmin()">Salir</button>
+      </div>
+      <div class="section-label">Solicitudes pendientes</div>
+      <div class="pending-list" id="pendingList"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>TalentoRey · Reynosa, Tamaulipas · <a href="https://open.spotify.com/intl-es/artist/1Xl4qTWLWuIU5MXUfkRWj0" target="_blank" style="color:var(--purple);text-decoration:none;">Creado por Y-shía ↗</a></p>
+  </footer>
+
+</div>
+
+<!-- REGISTER MODAL -->
+<div class="modal-overlay" id="registerModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('register')">✕</button>
+    <h2>Únete a TalentoRey</h2>
+    <p class="modal-sub">Completa tu perfil y aparecerás en la plataforma tras revisión.<br><span style="color:var(--amber);font-size:12px;">✦ Preferentemente artistas de Reynosa, Río Bravo, Matamoros o ciudades cercanas.</span></p>
+    <div id="registerForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nombre artístico *</label>
+          <input type="text" class="form-input" id="regNombre" placeholder="Tu nombre o banda">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Género musical *</label>
+          <select class="form-select" id="regGenero">
+            <option value="">Selecciona...</option>
+            <option value="rap">Rap / Hip-Hop</option>
+            <option value="pop">Pop</option>
+            <option value="electronica">Electrónica</option>
+            <option value="banda">Banda / Regional</option>
+            <option value="rock">Rock</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bio corta *</label>
+        <textarea class="form-textarea" id="regBio" placeholder="Cuéntale a Reynosa quién eres..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Link de Spotify / SoundCloud / YouTube</label>
+        <input type="url" class="form-input" id="regSpotify" placeholder="https://open.spotify.com/...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Link adicional (Instagram, etc.)</label>
+        <input type="url" class="form-input" id="regLink2" placeholder="https://instagram.com/...">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">WhatsApp (opcional)</label>
+          <input type="tel" class="form-input" id="regWa" placeholder="+52 899...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email de contacto *</label>
+          <input type="email" class="form-input" id="regEmail" placeholder="tu@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL de foto de perfil (opcional)</label>
+        <input type="url" class="form-input" id="regFoto" placeholder="https://...">
+      </div>
+      <button class="btn-submit" onclick="submitRegistration()">Enviar solicitud ✦</button>
+    </div>
+    <div id="registerSuccess" style="display:none;" class="success-msg">
+      <div class="success-icon">✦</div>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Tu perfil será revisado pronto. Cuando sea aprobado aparecerás en TalentoRey. Gracias por ser parte de la escena.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const ADMIN_PASSWORD = 'talentoadmin2025';
+let currentFilter = 'todos';
+let isAdminLoggedIn = false;
+
+function getData() {
+  try {
+    return {
+      artists: JSON.parse(localStorage.getItem('tr_artists') || '[]'),
+      pending: JSON.parse(localStorage.getItem('tr_pending') || '[]')
+    };
+  } catch { return { artists: [], pending: [] }; }
+}
+
+function saveData(data) {
+  localStorage.setItem('tr_artists', JSON.stringify(data.artists));
+  localStorage.setItem('tr_pending', JSON.stringify(data.pending));
+}
+
+const genreColors = {
+  rap: '#7C3AED', pop: '#DB2777', electronica: '#0891B2',
+  banda: '#B45309', rock: '#DC2626', otro: '#6B7280'
+};
+
+const genreNames = {
+  rap: 'Rap / Hip-Hop', pop: 'Pop', electronica: 'Electrónica',
+  banda: 'Banda / Regional', rock: 'Rock', otro: 'Otro'
+};
+
+function getInitials(name) {
+  return name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+}
+
+function renderArtists() {
+  const { artists } = getData();
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const grid = document.getElementById('artistsGrid');
+  const countEl = document.getElementById('artistCount');
+
+  let filtered = artists.filter(a => {
+    const matchFilter = currentFilter === 'todos' || a.genero === currentFilter;
+    const matchSearch = !search || a.nombre.toLowerCase().includes(search) || a.bio.toLowerCase().includes(search) || a.genero.toLowerCase().includes(search);
+    return matchFilter && matchSearch;
+  });
+
+  countEl.textContent = `${filtered.length} artista${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><h3>Sin resultados</h3><p>Sé el primero en registrarte o cambia los filtros.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((a, i) => {
+    const color = genreColors[a.genero] || '#6B7280';
+    const initials = getInitials(a.nombre);
+    return `
+    <div class="artist-card" style="animation-delay:${i * 0.05}s">
+      <div class="card-cover">
+        <div class="card-cover-bg" style="background: radial-gradient(ellipse at center, ${color}40 0%, transparent 70%)"></div>
+        ${a.foto ? `<img src="${a.foto}" style="width:64px;height:64px;border-radius:50%;border:2px solid ${color}60;object-fit:cover;position:relative;z-index:1;" onerror="this.style.display='none'">` : `<div class="card-avatar" style="border-color:${color}60;color:${color}">${initials}</div>`}
+        <div class="card-genre-badge">${genreNames[a.genero] || a.genero}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">${a.nombre}</div>
+        <div class="card-bio">${a.bio}</div>
+        <div class="card-links">
+          ${a.spotify ? `<a href="${a.spotify}" target="_blank" class="link-pill">🎵 Escuchar</a>` : ''}
+          ${a.link2 ? `<a href="${a.link2}" target="_blank" class="link-pill">🔗 Redes</a>` : ''}
+        </div>
+        <div class="card-footer">
+          ${a.email ? `<button class="btn-contact" onclick="window.location='mailto:${a.email}'">✉ Email</button>` : ''}
+          ${a.whatsapp ? `<button class="btn-contact whatsapp" onclick="window.open('https://wa.me/${a.whatsapp.replace(/[^0-9]/g,'')}')">💬 WhatsApp</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArtists();
+}
+
+function filterArtists() { renderArtists(); }
+
+function openModal(type) {
+  document.getElementById(type + 'Modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(type) {
+  document.getElementById(type + 'Modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function submitRegistration() {
+  const nombre = document.getElementById('regNombre').value.trim();
+  const genero = document.getElementById('regGenero').value;
+  const bio = document.getElementById('regBio').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+
+  if (!nombre || !genero || !bio || !email) {
+    alert('Por favor completa los campos obligatorios (*)');
+    return;
+  }
+
+  const data = getData();
+  data.pending.push({
+    id: Date.now(),
+    nombre,
+    genero,
+    bio,
+    email,
+    spotify: document.getElementById('regSpotify').value.trim(),
+    link2: document.getElementById('regLink2').value.trim(),
+    whatsapp: document.getElementById('regWa').value.trim(),
+    foto: document.getElementById('regFoto').value.trim(),
+    fecha: new Date().toLocaleDateString('es-MX')
+  });
+  saveData(data);
+
+  document.getElementById('registerForm').style.display = 'none';
+  document.getElementById('registerSuccess').style.display = 'block';
+}
+
+function toggleAdmin() {
+  const form = document.getElementById('adminLoginForm');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function loginAdmin() {
+  const pass = document.getElementById('adminPass').value;
+  if (pass === ADMIN_PASSWORD) {
+    isAdminLoggedIn = true;
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    renderPending();
+  } else {
+    alert('Contraseña incorrecta');
+  }
+}
+
+function logoutAdmin() {
+  isAdminLoggedIn = false;
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('adminLoginForm').style.display = 'none';
+  document.getElementById('adminPass').value = '';
+}
+
+function renderPending() {
+  const { pending } = getData();
+  const list = document.getElementById('pendingList');
+  if (!pending.length) {
+    list.innerHTML = '<p class="no-pending">No hay solicitudes pendientes ✦</p>';
+    return;
+  }
+  list.innerHTML = pending.map(p => `
+    <div class="pending-card" id="pending-${p.id}">
+      <div class="card-avatar" style="width:40px;height:40px;font-size:16px;flex-shrink:0">${getInitials(p.nombre)}</div>
+      <div class="pending-info">
+        <div class="pending-name">${p.nombre}</div>
+        <div class="pending-meta">${genreNames[p.genero] || p.genero} · ${p.email} · ${p.fecha}</div>
+      </div>
+      <button class="btn-approve" onclick="approveArtist(${p.id})">Aprobar</button>
+      <button class="btn-reject" onclick="rejectArtist(${p.id})">Rechazar</button>
+    </div>
+  `).join('');
+}
+
+function approveArtist(id) {
+  const data = getData();
+  const idx = data.pending.findIndex(p => p.id === id);
+  if (idx !== -1) {
+    data.artists.push(data.pending[idx]);
+    data.pending.splice(idx, 1);
+    saveData(data);
+    renderPending();
+    renderArtists();
+  }
+}
+
+function rejectArtist(id) {
+  const data = getData();
+  data.pending = data.pending.filter(p => p.id !== id);
+  saveData(data);
+  renderPending();
+}
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('modal-overlay')) closeModal(e.target.id.replace('Modal',''));
+});
+
+renderArtists();
+</script>
+</body>
+</html>
